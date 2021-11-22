@@ -43,7 +43,7 @@ body {
 .board.x .cell:not(.x):not(.o):hover::before,
 .board.x .cell:not(.x):not(.o):hover::after,
 .board.o .cell:not(.x):not(.o):hover::before{
-    background-color: rgb(255, 149, 149);
+    background-color: rgba(199, 247, 206, 0.856);
 }
 
 .cell.x::after,
