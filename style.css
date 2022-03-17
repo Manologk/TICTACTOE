@@ -11,6 +11,8 @@
 
 body {
   margin: 0;
+  background-color: #485461;
+background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
 }
 
 .board {
@@ -149,3 +151,104 @@ body {
 .winning-message.show{
     display: flex;
 }
+
+
+/* table styling */
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 200px;
+  width: 50%;
+  margin: 2px;
+  /* float: left; */
+  /* position: relative; */
+}
+
+/* table * {
+  position: relative;
+} */
+
+table td, table th {
+  padding-left: 8px;
+}
+
+table thead tr {
+  height: 60px;
+  background: rgba(199, 247, 206, 0.856);
+  font-size: 16px;
+}
+
+table tbody tr {
+  height: 48px;
+  text-align: center;
+}
+
+
+/* styling the button */
+/* From cssbuttons.io */
+button {
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: rgba(199, 247, 206, 0.856);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: rgba(199, 247, 206, 0.856);
+ }
+ 
+ button, button span {
+  transition: 200ms;
+ }
+ 
+ button .text {
+  transform: translateX(35px);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+ }
+ 
+ button .icon {
+  position: absolute;
+  border-left: 1px solid rgba(7, 7, 7, 0.856);
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  margin-left: 35px;
+ }
+ 
+ button svg {
+  width: 20px;
+  fill: black;
+ }
+ 
+ button:hover {
+  background: rgba(199, 247, 206, 0.856);
+ }
+ 
+ button:hover .text {
+  color: transparent;
+ }
+ 
+ button:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+ }
+ 
+ button:focus {
+  outline: none;
+ }
+ 
+ button:active .icon svg {
+  transform: scale(0.8);
+ }
+
+ 

@@ -14,6 +14,7 @@ const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
 const restartButton = document.getElementById('restart')
+const resetButton = document.getElementById('reset')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 let circleTurn
 
@@ -21,6 +22,8 @@ startGame()
 
 restartButton.addEventListener('click', startGame)
 
+
+//set up all the elements
 function startGame() {
   circleTurn = false
   cellElements.forEach(cell => {
@@ -47,16 +50,33 @@ function handleClick(e) {
   }
 }
 
+
+let xscore = document.querySelector('.xscore');
+let oscore = document.querySelector('.oscore');
+localStorage.setItem('xscore', 0);
+localStorage.setItem('oscore', 0);
+xscr = localStorage.getItem('xscore');
+oscr = localStorage.getItem('oscore');
+
 function endGame(draw) {
   if (draw) {
     winningMessageTextElement.innerText = 'Draw!'
   } else {
-    winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Wins!`
+    winningMessageTextElement.innerText = `${circleTurn ? "O" : "X"} Wins!`
+    if(circleTurn){;
+      localStorage.oscore = parseInt(localStorage.oscore) + 1;
+      oscore.textContent =  localStorage.oscore;
+    }
+    else{
+      localStorage.xscore = parseInt(localStorage.xscore) + 1;
+      xscore.textContent = localStorage.xscore;
+    }
   }
   winningMessageElement.classList.add('show')
 }
 
 function isDraw() {
+  //cell element doesnt have .every method, so we destruture so that we can use it
   return [...cellElements].every(cell => {
     return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
   })
@@ -65,6 +85,7 @@ function isDraw() {
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass)
 }
+
 
 function swapTurns() {
   circleTurn = !circleTurn
@@ -81,9 +102,12 @@ function setBoardHoverClass() {
 }
 
 function checkWin(currentClass) {
-  return WINNING_COMBINATIONS.some(combination => {
+  //check if any of the winning combinations have been met
+  //loop over the combinations and check if any are true
+  return WINNING_COMBINATIONS.some(combination => {  
     return combination.every(index => {
       return cellElements[index].classList.contains(currentClass)
     })
   })
 }
+
